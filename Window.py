@@ -23,6 +23,10 @@ class Window:
         return self._slabs
 
     def display(self, name):
+        import os
+        # Placer la fenêtre sur l'écran
+        os.environ['SDL_VIDEO_WINDOW_POS'] = "%d, %d" % (pygame.display.Info().current_w / 5, 50)
+
         self._window = pygame.display.set_mode(self._size)
         pygame.display.set_caption(name)
         antiquewhite = True
