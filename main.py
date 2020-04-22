@@ -14,6 +14,10 @@ def run():
         ev = pygame.event.poll()  # Récupérer tous les évènements
         if ev.type == pygame.QUIT:  # Croix rouge
             break
+        if ev.type == pygame.MOUSEBUTTONUP:
+            for slab in window.get_slabs():
+                if slab.is_mouse_in(pygame.mouse.get_pos()):
+                    slab.on_clicked()
         pygame.display.update()
     pygame.quit()
 
