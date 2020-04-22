@@ -8,7 +8,7 @@ from Window import Window
 
 def run():
     pygame.init()
-    window = Window((900, 800))
+    window = Window((900, 800), "Checkers", "./res/app_icon.png")
 
     while True:
         ev = pygame.event.poll()  # Récupérer tous les évènements
