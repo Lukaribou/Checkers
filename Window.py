@@ -17,8 +17,7 @@ class Window:
         for i in range(10):  # 10 lignes
             temp = []
             for j in range(10):  # 10 dalles par ligne
-                c = "antiquewhite" if antiquewhite else "maroon"
-                temp.append(Slab(self._window, (80, 80), (i, j), c))
+                temp.append(Slab(self._window, 80, (i, j), "antiquewhite" if antiquewhite else "maroon"))
                 antiquewhite = not antiquewhite  # => antiquewhite = !antiquewhite
             self._slabs.append(temp)
             antiquewhite = not antiquewhite  # On inverse encore pour faire les cases
