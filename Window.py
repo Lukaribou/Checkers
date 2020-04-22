@@ -1,5 +1,6 @@
 import pygame
 from Slab import Slab
+from Pawn import Pawn
 
 """
 self.slabs = [
@@ -16,11 +17,15 @@ class Window:
         self._window = None
         self._size = size
         self._slabs = []
+        self._pawns = []
         if not wait_display:
             self.display(name, icon)
 
     def get_slabs(self):
         return self._slabs
+
+    def get_pawns(self):
+        return self._pawns
 
     def display(self, name, icon):
         import os
@@ -29,12 +34,17 @@ class Window:
 
         self._window = pygame.display.set_mode(self._size)
         pygame.display.set_caption(name)
+        self._window.fill(pygame.Color("darkgreen"))
         if icon:
             pygame.display.set_icon(pygame.image.load(icon))
-        antiquewhite = True
+
+        light = True
         for i in range(10):  # 10 lignes
             for j in range(10):  # 10 dalles par ligne
                 self._slabs.append(
-                    Slab(self._window, 80, (j, i), i * 10 + j, "antiquewhite" if antiquewhite else "navajowhite"))
-                antiquewhite = not antiquewhite  # => antiquewhite = !antiquewhite
-            antiquewhite = not antiquewhite  # On inverse encore pour faire les cases
+                    Slab(self._window, (j, i), i * 10 + j, "antiquewhite" if light else "goldenrod"))
+                if not light and (i < 3 or i > 6):  # Pions sur les cases foncées
+                    self._pawns.append(
+                        Pawn(self._window, (j, i), i * 10 + j, "black" if i < 3 else "whitesmoke"))
+                light = not light  # => antiquewhite = !antiquewhite
+            light = not light  # On inverse encore pour faire les cases
