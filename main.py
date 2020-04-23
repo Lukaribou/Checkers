@@ -1,6 +1,6 @@
 import pygame
 from Window import Window
-
+import constants
 
 # 1 case = 80*80px
 # 10 cases par ligne sur 10 lignes
@@ -17,6 +17,7 @@ def run():
         if ev.type == pygame.MOUSEBUTTONUP:
             for pawn in window.get_pawns():
                 if pawn.is_mouse_in(pygame.mouse.get_pos()):
+                    constants.update_tray({'slabs': window.get_slabs(), 'pawns': window.get_pawns()})
                     pawn.on_clicked()
         pygame.display.update()
     pygame.quit()

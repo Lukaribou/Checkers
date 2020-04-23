@@ -18,11 +18,17 @@ class Pawn:
 
     def draw(self):
         pygame.draw.circle(self._window, self._color, self._position, PAWN_RADIUS)
-        pygame.draw.circle(self._window, pygame.Color("navy"), self._position, PAWN_RADIUS, 1)
+        pygame.draw.circle(self._window, pygame.Color('navy'), self._position, PAWN_RADIUS, 1)
 
     def is_mouse_in(self, click):
         return self._position[0] - PAWN_RADIUS < click[0] < self._position[0] + PAWN_RADIUS and \
                self._position[1] - PAWN_RADIUS < click[1] < self._position[1] + PAWN_RADIUS
 
     def on_clicked(self):
-        print("Clicked", self._num)
+        from constants import game_tray
+        self.dead()
+
+    def dead(self):
+        from constants import game_tray
+        self._alive = False
+        game_tray['slabs'][self._num].draw()
