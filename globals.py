@@ -6,7 +6,18 @@ game_tray = {
     'pawns': None
 }
 
+turn = 'black'
+
 
 def update_tray(new):
     global game_tray
     game_tray = new
+
+
+def get_turn():
+    return turn
+
+
+def alternate_turn():
+    global turn
+    white_turn = not turn

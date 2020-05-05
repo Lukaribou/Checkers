@@ -1,5 +1,5 @@
 import pygame
-from constants import SLAB_SIZE
+from globals import SLAB_SIZE
 
 
 class Slab:
