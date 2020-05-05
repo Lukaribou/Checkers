@@ -1,4 +1,4 @@
 # Checkers
  Jeu de dames en Python utilisant pygame
 
-Pour voir le code en cours, il vous faudra aller dans la branche "dev" !
+Ce projet est dans sa branche **master** mais n'est pas terminé.
