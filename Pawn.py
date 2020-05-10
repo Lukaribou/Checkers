@@ -1,5 +1,5 @@
 import pygame
-from globals import SLAB_SIZE, PAWN_RADIUS
+from globals import SLAB_SIZE, PAWN_RADIUS, pawn_black_color
 
 
 class Pawn:
@@ -7,7 +7,7 @@ class Pawn:
         self._window = window
         self._num = num
         self._color = None
-        self._team = ('white', 'black')[color == 'black']
+        self._team = ('white', 'black')[color == pawn_black_color]
         self._alive = True
         self._position = self.px_position(position)
         self._mvt_choice = False

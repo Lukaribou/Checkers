@@ -1,6 +1,7 @@
 import pygame
 from Slab import Slab
 from Pawn import Pawn
+from globals import pawn_black_color, pawn_white_color
 
 """
 self.slabs = [
@@ -45,6 +46,6 @@ class Window:
                     Slab(self._window, (j, i), i * 10 + j, "antiquewhite" if light else "goldenrod"))
                 if not light and (i < 3 or i > 6):  # Pions sur les cases foncées
                     self._pawns.append(
-                        Pawn(self._window, (j, i), i * 10 + j, "black" if i < 3 else "whitesmoke"))
+                        Pawn(self._window, (j, i), i * 10 + j, pawn_black_color if i < 3 else pawn_white_color))
                 light = not light  # => antiquewhite = !antiquewhite
             light = not light  # On inverse encore pour faire les cases
