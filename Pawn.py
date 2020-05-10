@@ -48,6 +48,8 @@ class Pawn:
 
     def dead(self):
         from globals import game_tray
-        self._alive = False
         game_tray['slabs'][self._num].draw()
+
+    def update(self):
+        from globals import game_tray
         game_tray['pawns'][self._num] = self
