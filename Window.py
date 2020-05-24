@@ -1,7 +1,7 @@
 import pygame
 from Slab import Slab
 from Pawn import Pawn
-from globals import pawn_black_color, pawn_white_color
+from globals import PAWN_BLACK_COLOR, PAWN_WHITE_COLOR
 
 """
 self.slabs = [
@@ -19,6 +19,7 @@ class Window:
         self._size = size
         self._slabs = []
         self._pawns = []
+        self._selected_pawn = None
         if not wait_display:
             self.display(name, icon)
 
@@ -46,6 +47,12 @@ class Window:
                     Slab(self._window, (j, i), i * 10 + j, "antiquewhite" if light else "goldenrod"))
                 if not light and (i < 3 or i > 6):  # Pions sur les cases foncées
                     self._pawns.append(
-                        Pawn(self._window, (j, i), i * 10 + j, pawn_black_color if i < 3 else pawn_white_color))
+                        Pawn(self._window, (j, i), i * 10 + j, PAWN_BLACK_COLOR if i < 3 else PAWN_WHITE_COLOR))
                 light = not light  # => antiquewhite = !antiquewhite
             light = not light  # On inverse encore pour faire les cases
+
+    def get_selected_pawn(self):
+        return self._selected_pawn
+
+    def set_selected_pawn(self, sel):
+        self._selected_pawn = sel

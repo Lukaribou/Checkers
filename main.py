@@ -11,6 +11,7 @@ def run():
     window = Window((900, 800), "Checkers", "./res/app_icon.png")
 
     while True:
+        globals.update_window(window)
         ev = pygame.event.poll()  # Récupérer tous les évènements
         if ev.type == pygame.QUIT:  # Croix rouge
             break
@@ -21,6 +22,10 @@ def run():
                     pawn.on_clicked()
         pygame.display.update()
     pygame.quit()
+
+
+def get_window():
+    return window
 
 
 if __name__ == '__main__':

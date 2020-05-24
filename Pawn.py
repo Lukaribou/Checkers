@@ -1,5 +1,5 @@
 import pygame
-from globals import SLAB_SIZE, PAWN_RADIUS, pawn_black_color
+from globals import SLAB_SIZE, PAWN_RADIUS, PAWN_BLACK_COLOR
 
 
 class Pawn:
@@ -7,7 +7,7 @@ class Pawn:
         self._window = window
         self._num = num
         self._color = None
-        self._team = ('white', 'black')[color == pawn_black_color]
+        self._team = ('white', 'black')[color == PAWN_BLACK_COLOR]
         self._alive = True
         self._position = self.px_position(position)
         self._mvt_choice = False
@@ -38,8 +38,12 @@ class Pawn:
         self.set_color("green")
 
     def on_clicked(self):
-        from globals import get_turn
+        from globals import get_turn, get_window
         if get_turn() == self._team:
+            if not get_window().get_selected_pawn() == self._num:
+                self.on_movement_choice()
+
+
             if not self._mvt_choice:
                 self.on_movement_choice()
             else:
@@ -48,6 +52,7 @@ class Pawn:
 
     def dead(self):
         from globals import game_tray
+        self.update()
         game_tray['slabs'][self._num].draw()
 
     def update(self):
